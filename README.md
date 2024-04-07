@@ -129,7 +129,7 @@ The scratch storage is probably the more interesting of all the storage options.
 
 PACE recommends that you use Globus to transfer files to and from PACE. I have tried this before, but it is very buggy. I personally recommend using `scp` or `rsync` as ways to transfer files to and from PACE.
 
-Before you use the command to transfer files, make a new instance of the terminal while your main terminal is logged into pace, and then run the rysnc/scp commands on the new terminal. 
+Before you use the command to transfer files, make a new instance of the terminal while your main terminal is logged into PACE, and then run the rsync/scp commands on the new terminal. 
 
 In general, the structure for using `rsync` is as such:
 
