@@ -1,4 +1,4 @@
-# Intro To PACE
+# Intro To PACE Phoenix
 
 Welcome to PACE! PACE stands for Partnership for an Advanced Computer Environment. PACE is one of the HPC Clusters available for GT Researchers and students to use for intensive computational tasks. The official PACE website can be found [here](https://pace.gatech.edu/). This is meant to be made as a living document. If you would like to contribute to this document, please make a PR!
 
