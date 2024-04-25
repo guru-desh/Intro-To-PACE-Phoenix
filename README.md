@@ -180,6 +180,8 @@ This is the most important section of this entire document. We'll talk about how
 
 Interactive Jobs are one of the most easiest jobs to get started with in PACE. 
 
+### Using Open OnDemand (Recommended)
+
 PACE has really put initiative into adding Open OnDemand to their platform, which creates a nice UI that handles everything neatly. Interactive Jobs can do all types of jobs well except for Job Arrays and sometimes environment setup with Apptainer (except for the terminal/command line option), which a non-interactive job handles better. You can go [here](https://ondemand-phoenix.pace.gatech.edu/pun/sys/dashboard/) to access Open OnDemand for the Phoenix Cluster. Note that you will have to sign into SSO and be on the GT VPN to access it.
 
 Here is what the home page looks like:
@@ -221,6 +223,30 @@ After some time, the page will change to this:
 You can now access your Jupyter Server. It will give you the exact same experience as working with Jupyter locally. This same experience applies to the other options available in Open OnDemand such as VS Code, Terminal, etc.
 
 I personally don't use Open OnDemand as much. The reason is because I use VS Code remote access feature, which already gives me exactly what I'm looking for. I also mainly schedule non-interactive jobs. I believe that Open OnDemand is useful, and I have used it before as well. It's a great introduction into PACE for beginners. It's ease of use is why PACE promotes it so much to draw researchers to use PACE in its easiest form possible.
+
+### Using `salloc` (Not Recommended)
+
+Another way to start an interactive job is to use the `salloc` command. The `salloc` command allows you to stay within your current terminal in PACE and enter the machines requested for the job. The advantage of this is that you don't need to leave your terminal. The disadvantage is that this is less powerful compared to the options offered in PACE's Open OnDemand instance and it also requires decent SLURM knowledge.
+
+`salloc`, like `sbatch` requires different flags to set the configuration for the job. `sbatch` and `salloc` share the same flags, so if you have flags defined in an `.sbatch` file, then you can edit it to immediately use `salloc`. **This section is written assuming that you have knowledge of `sbatch`. Please read about `sbatch` in the [non interactive job section](#non-interactive-jobs).**
+
+As an example, let's use an existing `sbatch` configuration and convert it so that it can be used with `salloc`. In the [example single node CPU Job configuration](#single-node-cpu-jobs), the job configuration was defined as the following:
+
+```bash
+#SBATCH --job-name=Task
+#SBATCH --account=gts-ts133
+#SBATCH --nodes=1 --ntasks-per-node=24
+#SBATCH --time=2:00:00
+#SBATCH --qos=inferno
+#SBATCH --output=./logs/task.out
+#SBATCH --mail-type=NONE
+```
+
+**To use `salloc` with the same job configuration, you should copy all flags except for `--job-name`, `--output`, `--mail-type`** since `salloc` starts a job instantly instead of putting a job in a queue like `sbatch`. The final `salloc` command would be the following:
+
+```bash
+salloc --account=gts-ts133 --nodes=1 --ntasks-per-node=24 --time=2:00:00 --qos=inferno
+```
 
 ## Non-Interactive Jobs
 
