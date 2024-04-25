@@ -147,6 +147,14 @@ Using `scp` is very similar as well. I won't cover `scp` since `rsync` was alrea
 
 # Setting up Environments on PACE
 
+## Conda Environments
+
+You cannot use `conda` directly once you log into PACE. You need to *load in the `conda` module*. This is the process for any other modules that PACE offers. You can reference [the PACE documentation](https://docs.pace.gatech.edu/slurm-software/software_list/) to see all the offered software.
+
+**To load in `conda`, run the command `module load anaconda3`**. You should see that the `base` environment is now active. **You must create your environment**. You cannot use the `base` environment since it not writable. From here, all the regular `conda` commands to create, activate, and install packages into environments will work as standard. To avoid unexpected issues, please make sure to follow [the intro steps](#things-to-do-on-your-first-time-on-pace).
+
+## Even more custom environments
+
 PACE doesn't have every module in the world available to use. An example of this is HTK. This means that we have to provide a container that contains this informatation and give it to PACE so we can run experiments with our environment but leverage the Phoenix Cluster. This process is straightforward, but requires back-and-forth with PACE Support and **is a multi-month process**. If you have specific requirements for an environment, first check that the existing environments that I put on PACE satisfy your requirements. More information about these existing containers can be found [here](https://github.com/guru-desh/ASLRT-Docker).
 
 If you really need to create a new environment, here's the steps that you would need to follow:
@@ -170,7 +178,9 @@ This is the most important section of this entire document. We'll talk about how
 
 ## Interactive Jobs
 
-Interactive Jobs are one of the most easiest jobs to get started with in PACE. PACE has really put initiative into adding Open OnDemand to their platform, which creates a nice UI that handles everything neatly. Interactive Jobs can do all types of jobs well except for Job Arrays and sometimes environment setup with Apptainer (except for the terminal/command line option), which a non-interactive job handles better. You can go [here](https://ondemand-phoenix.pace.gatech.edu/pun/sys/dashboard/) to access Open OnDemand for the Phoenix Cluster. Note that you will have to sign into SSO and be on the GT VPN to access it.
+Interactive Jobs are one of the most easiest jobs to get started with in PACE. 
+
+PACE has really put initiative into adding Open OnDemand to their platform, which creates a nice UI that handles everything neatly. Interactive Jobs can do all types of jobs well except for Job Arrays and sometimes environment setup with Apptainer (except for the terminal/command line option), which a non-interactive job handles better. You can go [here](https://ondemand-phoenix.pace.gatech.edu/pun/sys/dashboard/) to access Open OnDemand for the Phoenix Cluster. Note that you will have to sign into SSO and be on the GT VPN to access it.
 
 Here is what the home page looks like:
 
@@ -418,6 +428,7 @@ In the Templates folder, I provide an outline on how to run a job array with the
 - `squeue -A <ACCOUNT>` - Checks jobs related to a PACE account
 - `scancel <JOB_ID>` - Cancels a job on PACE
 - `module load anaconda3` - Loads Anaconda (so you can create your own conda environments)
+- `module spider` - Shows all PACE modules and their versions
 
 # PACE Command Cheatsheet
 
